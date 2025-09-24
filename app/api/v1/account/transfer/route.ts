@@ -97,7 +97,7 @@ async function retryTransfer(senderId: number, receiverId: number, amount: numbe
     }
 }
 
-export async function transferMoney(senderId: number, receiverId: number, amount: number) {
+async function transferMoney(senderId: number, receiverId: number, amount: number) {
     return prisma.$transaction(async (tx) => {
         const sender = await tx.user.findUnique({
             where: {id: senderId},
