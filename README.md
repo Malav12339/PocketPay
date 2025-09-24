@@ -18,12 +18,22 @@ It allows users to securely sign up, sign in, check their balance, transfer mone
 
 ## 🖼 Pages
 
-Here’s a list of app pages (screenshots will be added):  
-1. **Signup**  
-2. **Signin**  
-3. **Dashboard**  
-4. **Send**  
-5. **Update Profile**  
+Here’s a list of app pages:
+
+### Signup
+![Signup](public/screenshots/signup.png)
+
+### Signin
+![Signin](public/screenshots/signin.png)
+
+### Dashboard
+![Dashboard](public/screenshots/dashboard.png)
+
+### Send
+![Send](public/screenshots/send.png)
+
+### Update Profile
+![Update Profile](public/screenshots/update.png)
 
 ---
 
