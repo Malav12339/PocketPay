@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prismaSignleton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
+import { fetchUsers } from "@/lib/user";
 
 export async function PUT(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -89,39 +90,4 @@ export async function GET(req: NextRequest) {
             message: "Internal server error"
         }, {status: 500})
     }
-}
-
-export async function fetchUsers(filter: string) {
-    // will not return user it self
-    const session = await getServerSession(authOptions)
-    
-    if(!session?.user) {
-        throw new Error("Authentication error: Not logged in")
-    }
-    
-    return prisma.user.findMany({
-        where: {
-            NOT: {
-                id: Number(session.user.id)
-            },
-            OR: [{
-                firstName: {
-                    contains: filter,
-                    mode: 'insensitive'
-                }
-            }, {
-                lastName: {
-                    contains: filter,
-                    mode: 'insensitive'
-                }
-            }]
-        }, 
-        select: {
-            id: true,
-            firstName: true,
-            lastName: true,
-            email: true
-        }
-    })
-    
 }

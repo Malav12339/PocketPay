@@ -1,8 +1,8 @@
-import { fetchUsers } from "@/app/api/v1/user/route";
 import Appbar from "@/app/components/Appbar";
 import Balance from "@/app/components/Balance";
 import Users from "@/app/components/Users";
 import { authOptions } from "@/lib/authOptions";
+import { fetchUsers } from "@/lib/user";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 

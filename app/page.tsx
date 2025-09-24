@@ -1,29 +1,39 @@
-"use client"
+"use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
-  const session = useSession()
-  const buttonStyle = "cursor-pointer p-2 border rounded-md m-5 hover:border-blue-700 hover:text-blue-700"
+  const { status } = useSession();
+  const router = useRouter();
+  const buttonStyle =
+    "cursor-pointer p-2 border rounded-md m-5 hover:border-blue-700 hover:text-blue-700";
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    }
+  }, [status, router]);
+
+  if (status === "loading") {
+    return <p>Loading...</p>; // Optional: avoid flicker
+  }
+
+  if (status === "authenticated") {
+    return null; // don't render anything if redirecting
+  }
 
   return (
     <div>
-      {session.status === "authenticated" && <div>
-        <br />
-        <p>{JSON.stringify(session.data.user)}</p> 
-        <br />
-        <Link className={buttonStyle} href="/dashboard">GO TO DASHBOARD</Link> <br />
-        <button className={buttonStyle} onClick={() => signOut()}>Log out</button>
-      </div>}
-
-      {session.status === "unauthenticated" && <div>
-        <button className={buttonStyle} onClick={() => signIn()}>Sign in</button>
-        <br /> 
-        {/* <button className={buttonStyle} onClick={() => redirect("/signup")}>Sign up</button> */}
-        <Link className={buttonStyle} href="/signup">Sign up</Link>
-        </div>}
-      
+      <button className={buttonStyle} onClick={() => signIn()}>
+        Sign in
+      </button>
+      <br />
+      <Link className={buttonStyle} href="/signup">
+        Sign up
+      </Link>
     </div>
   );
 }
