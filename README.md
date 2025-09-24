@@ -21,19 +21,19 @@ It allows users to securely sign up, sign in, check their balance, transfer mone
 Here’s a list of app pages:
 
 ### Signup
-![Signup](public/screenshots/signup.png)
+![Signup](public/ss/signup.png)
 
 ### Signin
-![Signin](public/screenshots/signin.png)
+![Signin](public/ss/signin.png)
 
 ### Dashboard
-![Dashboard](public/screenshots/dashboard.png)
+![Dashboard](public/ss/dashboard.png)
 
 ### Send
-![Send](public/screenshots/send.png)
+![Send](public/ss/send.png)
 
 ### Update Profile
-![Update Profile](public/screenshots/update.png)
+![Update Profile](public/ss/update.png)
 
 ---
 
