@@ -4,7 +4,6 @@ import prisma from "@/lib/prismaSignleton";
 import bcrypt from "bcryptjs";
 import type { Session } from "next-auth";
 import type { JWT } from "next-auth/jwt";
-import { Prisma } from "@prisma/client";
 
 // Extend JWT type
 declare module "next-auth/jwt" {
@@ -25,7 +24,7 @@ export const authOptions: NextAuthOptions = {
         email: { label: "email", type: "text", placeholder: "email" },
         password: { label: "password", type: "password", placeholder: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         console.log("Received credentials:", credentials);
 
         const email = credentials?.email;
@@ -45,7 +44,7 @@ export const authOptions: NextAuthOptions = {
           const passwordMatch = await bcrypt.compare(password, user.password);
 
           if (passwordMatch) {
-            const { password, account, ...safeUser } = user;
+            const { account, ...safeUser } = user;
             const returnUser = {
               ...safeUser,
               balance: account?.balance,

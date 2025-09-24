@@ -5,10 +5,15 @@ import Button from "@/app/components/Button";
 import Heading from "@/app/components/Heading";
 import InputBox from "@/app/components/InputBox";
 import SubHeading from "@/app/components/SubHeading";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+interface SignupErrorResponse {
+  error?: string;        // for 409 and 500
+  errors?: any[];        // for 422
+}
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("")
@@ -19,7 +24,7 @@ export default function Signup() {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/api/v1/user/signup", {
+      await axios.post("http://localhost:3000/api/v1/user/signup", {
         firstName,
         lastName,
         email,
@@ -36,7 +41,8 @@ export default function Signup() {
       } else {
         alert("Invalid credentials")
       }
-    } catch (err: any) {
+    } catch (e: any) {
+      const err = e as AxiosError<SignupErrorResponse>
       if (err.response?.status == 409) {
         alert("email already taken")
       } else if (err.response?.status == 422) {

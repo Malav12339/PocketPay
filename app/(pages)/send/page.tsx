@@ -2,12 +2,17 @@
 
 import Button from "@/app/components/Button"
 import InputBox from "@/app/components/InputBox"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+
+interface ErrorResponse {
+    success: boolean
+    message: string
+}
 
 export default function Send() {
     const session = useSession()
@@ -86,10 +91,11 @@ export default function Send() {
                 await session.update()
                 router.push('/dashboard')
             }
-        } catch(e: any) {
+        } catch(er: unknown) {
             // console.error("--------------error came -------------\n")
             // console.error(e.response.data.message)
-            if(e.response.data.message === "Insufficient balance") {
+            const e = er as AxiosError<ErrorResponse>
+            if(e.response?.data?.message === "Insufficient balance") {
                 alert("Insufficient balance")
             } else {
                 alert("Transfer failed. Please try again....")
@@ -159,7 +165,7 @@ export default function Send() {
                         <div className={`bg-blue-50 rounded-xl p-4 text-center transition-transform duration-500 ease-out ${
                             amount ? 'transform translate-y-0' : 'transform -translate-y-4'
                         }`}>
-                            <p className="text-sm text-blue-600 font-medium mb-1">You're sending</p>
+                            <p className="text-sm text-blue-600 font-medium mb-1">{"You're sending"}</p>
                             <p className="text-3xl font-bold text-blue-700">
                                 {formatAmount(amount)}
                             </p>
@@ -209,7 +215,7 @@ export default function Send() {
                             <div>
                                 <p className="text-sm font-medium text-yellow-800">Security Reminder</p>
                                 <p className="text-xs text-yellow-700 mt-1">
-                                    Make sure you're sending money to the right person. Transfers cannot be reversed.
+                                    {"Make sure you're sending money to the right person. Transfers cannot be reversed."}
                                 </p>
                             </div>
                         </div>
