@@ -7,14 +7,14 @@ import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useState, Suspense } from "react"
 
 interface ErrorResponse {
     success: boolean
     message: string
 }
 
-export default function Send() {
+function SendContent() {
     const session = useSession()
     const searchParams = useSearchParams()
     const [amount, setAmount] = useState("")
@@ -223,5 +223,20 @@ export default function Send() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function Send() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <p className="text-gray-600">Loading...</p>
+                </div>
+            </div>
+        }>
+            <SendContent />
+        </Suspense>
     )
 }
