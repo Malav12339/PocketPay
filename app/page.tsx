@@ -11,9 +11,18 @@ import AuthButtons from "./components/AuthButtons";
 // import MobileMenu from "./components/MobileMenu";
 import ScrollingNav from "./components/ScrollingNav";
 import HeroButtons from "./components/HeroButtons";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
+import { redirect } from "next/navigation";
 
 // Server Component - Main Homepage
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions)
+
+  if(session) {
+    redirect("/dashboard")
+  }
+  
   const features = [
     {
       icon: <Zap className="w-8 h-8" />,
