@@ -21,7 +21,7 @@ function Balance({ amount }: { amount: string }) {
           ...session,
           user: {
             ...session?.user,
-            balance: balance,
+            balance: data.balance.toString(),
           },
         });
       }
@@ -30,16 +30,23 @@ function Balance({ amount }: { amount: string }) {
     }
   };
 
+  const userId = session?.user.id
+
   useEffect(() => {
     if (session?.user) {
       refreshBalance();
     }
-  }, [session?.user.id]);
+  }, [userId]);
 
   useEffect(() => {
     window.addEventListener("balanceUpdated", refreshBalance);
     return () => window.removeEventListener("balanceUpdated", refreshBalance);
   }, [session]);
+
+  useEffect(() => {
+    const interval = setInterval(refreshBalance, 10000)
+    return () => clearInterval(interval)
+  }, [userId])
 
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
