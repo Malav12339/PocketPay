@@ -10,6 +10,7 @@ export async function PUT(req: NextRequest) {
 
   if (!session || !session.user?.id) {
     return NextResponse.json({
+      success: false,
       message: "Authentication error: Not logged in.",
     }, { status: 401 });
   }
@@ -20,6 +21,7 @@ export async function PUT(req: NextRequest) {
     const result = userUpdateSchema.safeParse(dataToUpdate);
     if (!result.success) {
       return NextResponse.json({
+        success: false,
         error: result.error,
         message: "Provide valid inputs.",
       }, { status: 400 });
@@ -56,11 +58,13 @@ export async function PUT(req: NextRequest) {
 
     return NextResponse.json({
       message: "User updated successfully",
+      success: true,
       user: userWithBalance,
     });
   } catch (e) {
     console.error(e);
     return NextResponse.json({
+      success: false,
       message: "Failed to update user. Please try again later.",
     }, { status: 500 });
   }

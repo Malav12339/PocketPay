@@ -63,11 +63,11 @@ function Update() {
     setMessage({ type: "", content: "" });
 
     try {
-      const response = await axios.put("/api/v1/user", JSON.stringify(formData));
+      const response = await axios.put("/api/v1/user", formData);
 
       const data = response.data;
 
-      if (response.ok) {
+      if (data.success) {
         setMessage({ type: "success", content: "Profile updated successfully!" });
 
         // Refresh session (Step 2)
