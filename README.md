@@ -43,12 +43,12 @@ Below are the key pages of the PocketPay application with screenshots:
 
 ## ⚙️ Technologies Used
 
-- ![TypeScript](https://www.typescriptlang.org/assets/images/icons/favicon-32x32.png) [TypeScript](https://www.typescriptlang.org/)
-- ![React.js](https://react.dev/favicon.ico) [React.js](https://react.dev/)
-- ![Next.js](https://nextjs.org/favicon.ico) [Next.js](https://nextjs.org/)
-- ![Prisma](https://www.prisma.io/favicon.ico) [Prisma](https://www.prisma.io/)
-- ![PostgreSQL](https://www.postgresql.org/favicon.ico) [PostgreSQL](https://www.postgresql.org/)
-- ![Tailwind CSS](https://tailwindcss.com/favicon.ico) [Tailwind CSS](https://tailwindcss.com/)
+- TypeScript
+- React.js
+- Next.js
+- Prisma
+- PostgreSQL
+- Tailwind CSS
 
 ---
 
