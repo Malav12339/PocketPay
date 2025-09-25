@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react"
 import { useState, useEffect } from "react"
 import { User, Mail, CreditCard, CheckCircle, AlertCircle, ArrowLeft, Save } from "lucide-react"
+import axios from "axios"
 
 function Update() {
   const { data: session, update: updateSession } = useSession()
@@ -62,13 +63,9 @@ function Update() {
     setMessage({ type: "", content: "" });
 
     try {
-      const response = await fetch("/api/v1/user", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await axios.put("/api/v1/user", JSON.stringify(formData));
 
-      const data = await response.json();
+      const data = response.data;
 
       if (response.ok) {
         setMessage({ type: "success", content: "Profile updated successfully!" });

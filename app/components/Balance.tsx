@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
@@ -10,8 +11,8 @@ function Balance({ amount }: { amount: string }) {
   const refreshBalance = async () => {
     if (!session?.user) return;
     try {
-      const response = await fetch("http://localhost:3000/api/v1/account/balance");
-      const data = await response.json();
+      const response = await axios.get("/api/v1/account/balance");
+      const data = response.data;
 
       if (data.balance !== undefined) {
         setBalance(data.balance.toString());
