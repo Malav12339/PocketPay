@@ -47,10 +47,10 @@ export default async function Home() {
   ];
 
   const stats = [
-    { number: "10M+", label: "Active Users" },
-    { number: "₹500B+", label: "Transaction Volume" },
-    { number: "99.9%", label: "Uptime" },
-    { number: "24/7", label: "Support" }
+    { number: "100+", label: "Demo Users" },
+    { number: "₹10K+", label: "Simulated Transactions" },
+    { number: "99.9%", label: "App Uptime" },
+    { number: "24/7", label: "Learning & Practice" }
   ];
 
   const securityFeatures = [
@@ -70,14 +70,16 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent leading-tight">
-              The Future of
+              {/* The Future of */}
+              Master Digital  
               <span className="block bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                Digital Payments
+                {/* Digital Payments */}
+                Payments Risk-Free
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Send, receive, and manage money with unprecedented speed and security. 
-              Experience the next generation of financial freedom with QuickPayz.
+              Practice sending, receiving, and managing money with our realistic 
+              payment simulator. Build confidence before handling real transactions.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -110,7 +112,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Why Choose <span className="text-blue-400">QuickPayz</span>?
+              Why Choose <span className="text-blue-400">PocketPay</span>?
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Built for the modern world, designed for everyone. Experience payments like never before.
@@ -172,7 +174,7 @@ export default async function Home() {
             Ready to Transform Your Payments?
           </h2>
           <p className="text-xl text-gray-300 mb-10">
-            Join millions of users who trust QuickPayz for fast, secure, and reliable transactions.
+            Master payment skills safely - join our growing community of learners.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -193,13 +195,13 @@ export default async function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0 cursor-pointer hover:scale-105 transition-transform">
               <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg flex items-center justify-center font-bold">
-                Q
+                P
               </div>
-              <span className="text-xl font-bold">QuickPayz</span>
+              <span className="text-xl font-bold">PocketPay</span>
             </div>
             
             <div className="text-gray-400 text-sm">
-              © 2025 QuickPayz. All rights reserved.
+              © 2025 PocketPay. All rights reserved.
             </div>
           </div>
         </div>

@@ -23,10 +23,10 @@ export default function ScrollingNav() {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2 cursor-pointer">
             <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl flex items-center justify-center font-bold text-lg">
-              Q
+              P
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              QuickPayz
+              PocketPay
             </span>
           </div>
           
